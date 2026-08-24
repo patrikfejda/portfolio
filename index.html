@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="sk" data-theme="auto">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Patrik Fejda</title>
+<meta name="description" content="Pár vecí, čo som postavil vo voľnom čase." />
+<style>
+:root{
+  --bg:#faf9f7; --bg-2:#f0ede8; --surface:#ffffff; --line:#e6e1d8;
+  --ink:#232019; --ink-2:#6b6459; --ink-3:#9a9284;
+  --accent:#a2542a; --accent-soft:#f0e7de;
+  --radius:14px; --maxw:940px;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+:root[data-theme="dark"]{
+  --bg:#15130f; --bg-2:#1d1a15; --surface:#211d18; --line:#332e26;
+  --ink:#efe9df; --ink-2:#a89f90; --ink-3:#6f675b;
+  --accent:#d98a52; --accent-soft:#2b2118;
+}
+@media (prefers-color-scheme:dark){:root[data-theme="auto"]{
+  --bg:#15130f; --bg-2:#1d1a15; --surface:#211d18; --line:#332e26;
+  --ink:#efe9df; --ink-2:#a89f90; --ink-3:#6f675b;
+  --accent:#d98a52; --accent-soft:#2b2118;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* top bar: minimal */
+.top{display:flex;align-items:center;height:60px}
+.top .name{font-weight:600;font-size:15px;letter-spacing:-.01em}
+.top .tbtn{margin-left:auto;width:32px;height:32px;border:1px solid var(--line);border-radius:8px;background:var(--surface);cursor:pointer;color:var(--ink-2);font-size:14px}
+.top .tbtn:hover{color:var(--ink)}
+
+/* intro: plain, low-key */
+.intro{padding:40px 0 8px}
+.intro h1{font-size:1.7rem;font-weight:600;letter-spacing:-.02em;margin:0 0 12px}
+.intro p{color:var(--ink-2);font-size:1.02rem;max-width:56ch;margin:0 0 10px}
+.intro .gh{font-size:14px;color:var(--accent);font-weight:500;text-decoration:none}
+.intro .gh:hover{text-decoration:underline}
+
+/* section label */
+.lab{font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);
+  margin:52px 0 18px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+
+/* featured cards */
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:680px){.feat{grid-template-columns:1fr}}
+.fcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s,transform .15s}
+.fcard:hover{border-color:var(--ink-3);transform:translateY(-2px)}
+.fshot{aspect-ratio:16/10;background:var(--bg-2);position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.fshot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.fph{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(120% 120% at 30% 20%,var(--accent-soft),var(--bg-2) 72%)}
+.fph .m{font-family:var(--mono);font-size:2rem;font-weight:600;color:var(--accent);opacity:.8}
+.fph .t{position:absolute;bottom:10px;left:12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+.fbody{padding:15px 16px 16px;display:flex;flex-direction:column;flex:1}
+.frow{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.frow h3{margin:0;font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
+.plat{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);border:1px solid var(--line);border-radius:5px;padding:2px 6px}
+.fbody p{margin:0 0 12px;font-size:13.8px;color:var(--ink-2);flex:1}
+.ftags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.ftags span{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);background:var(--bg-2);border:1px solid var(--line);border-radius:5px;padding:2px 7px}
+.flinks{margin-top:auto;display:flex;gap:16px;align-items:center}
+.flink{font-size:13px;font-weight:500;color:var(--ink-2);display:inline-flex;align-items:center;gap:5px;width:fit-content;text-decoration:none}
+.flink:hover{color:var(--accent)}
+.flink svg{width:14px;height:14px}
+.flink.muted{color:var(--ink-3)}
+
+/* small list */
+.small{display:flex;flex-direction:column}
+.srow{display:flex;align-items:baseline;gap:12px;padding:11px 2px;border-bottom:1px solid var(--line)}
+.srow .nm{font-weight:540;font-size:14.5px;min-width:150px;flex-shrink:0}
+.srow .dd{color:var(--ink-2);font-size:13.5px;flex:1}
+.srow .ln{display:flex;gap:12px;flex-shrink:0}
+.srow .ln a{font-size:12.5px;color:var(--ink-3);text-decoration:none}
+.srow .ln a:hover{color:var(--accent)}
+@media(max-width:600px){.srow{flex-wrap:wrap;gap:4px 12px}.srow .nm{min-width:0}.srow .dd{flex-basis:100%;order:3}}
+
+.foot{margin-top:60px;border-top:1px solid var(--line);padding:26px 0 50px;color:var(--ink-3);font-size:13px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.foot a{color:var(--ink-2);text-decoration:none}.foot a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <span class="name">Patrik Fejda</span>
+    <button class="tbtn" id="theme" aria-label="téma">◐</button>
+  </div>
+
+  <section class="intro">
+    <h1>Pár vecí, čo som postavil</h1>
+    <p>Nič veľké, len projekty z voľného času, ktoré ma bavili alebo mi niečo uľahčili. Zopár appiek, pár nástrojov a hromada malých jednorázoviek.</p>
+    <a class="gh" href="https://github.com/patrikfejda" target="_blank" rel="noopener">github.com/patrikfejda →</a>
+  </section>
+
+  <div class="lab">Tie, čo ma bavili najviac</div>
+  <div class="feat" id="feat"></div>
+
+  <div class="lab">Ďalšie projekty</div>
+  <div class="feat" id="more"></div>
+
+  <div class="lab">Drobnosti a jednorázovky</div>
+  <div class="small" id="small"></div>
+
+  <div class="foot">
+    <a href="https://github.com/patrikfejda" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:patrik.fejda@innovatrics.com">Email</a>
+    <span style="margin-left:auto">Väčšina je hobby, robené pre seba.</span>
+  </div>
+</div>
+
+<script>
+const SHOTS="assets/shots/";
+const GH='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>';
+const LV='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+
+// FEATURED — the ones Patrik likes most
+const FEAT=[
+  {t:"Meetings Alarm", m:"MA", plat:"iOS · backend", shot:"meetings-alarm.png",
+   d:"Zoberie mítingy z kalendára a pri tých dôležitých zazvoní naozajstný budík, ktorý prehrá zvuk aj v Silent mode alebo Focuse (nie len tiché notifikácie, čo prešvihneš). Hono/Postgres backend syncuje kalendár, iOS appka a domovský widget ukazujú dnešný deň.",
+   tags:["SwiftUI","AlarmKit","WidgetKit","Hono","Postgres"]},
+  {t:"Pantry", m:"PA", plat:"iOS", shot:"pantry.png",
+   d:"Zdieľaná domáca špajza pre celú domácnosť. Pri nákupe či varení skenuješ čiarové kódy ako pri samoobslužnej pokladni; stav zásob je event-sourced a syncuje sa cez Supabase, takže všetci vidia to isté v reálnom čase.",
+   tags:["SwiftUI","VisionKit","Supabase"]},
+  {t:"Claude Semaphore", m:"SC", plat:"macOS", shot:"semafor-desktop.png",
+   d:"Keď máš rozbehnutých viac Claude Code sessions a odídeš od počítača, malý „semafor“ v rohu obrazovky a v menu bare na jeden pohľad povie, čo sa deje: zelená pracuje, žltá čaká na tvoje schválenie, červená skončila a čaká na teba. Bod je nad všetkým vrátane fullscreen videa a je click-through.",
+   tags:["Swift","AppKit","Claude Code hooks"], gh:"https://github.com/patrikfejda/semafor-claude"},
+  {t:"Brainrot Presenter", m:"BP", plat:"web", shot:"subway-surfers-desktop.png",
+   d:"Prezentér na dve polovice: tvoje PDF slajdy vľavo, loopujúce Subway Surfers (alebo Minecraft parkour) vpravo, nech publikum nezaspí. Ťaháš .pdf, vyberieš pozadie, prezentuješ. Celé client-side, funguje offline.",
+   tags:["JavaScript","PDF.js"], live:"https://patrikfejda.github.io/brainrot-presenter/", gh:"https://github.com/patrikfejda/brainrot-presenter"},
+  {t:"PAAS toolkit", m:"PS", plat:"python · iOS · RN", shot:null,
+   d:"Reverse-engineering bratislavského parkovacieho systému PAAS: získanie tokenu a dopytovanie cien parkovania, plus skener a terminál.",
+   tags:["Python","Swift","React Native"]},
+];
+
+// MORE — other real projects worth showing
+const MORE=[
+  {t:"Súdne rozhodnutia", m:"SR", plat:"web", shot:"sudne-desktop.png",
+   d:"Sťahuje najnovšie rozhodnutia slovenských súdov z verejného registra, LLM z právnického jazyka spraví jednu ľudskú vetu a všetko naservíruje ako vyhľadávateľný feed s kategóriami (drogy, napadnutie, šoférovanie…).",
+   tags:["Flask","SQLite","LLM","scraping"]},
+  {t:"YT Shorts pipeline", m:"YT", plat:"automation", shot:"ytshorts-frame.png",
+   d:"Pipeline, ktorá bez zásahu človeka vyrobí a nahrá YouTube Short: Claude napíše scenár, edge-tts ho nadaboluje, Remotion vyrenderuje video s titulkami cez gameplay a googleapis ho nahrá. Dedup a throttle v SQLite.",
+   tags:["TypeScript","Remotion","edge-tts","googleapis"]},
+  {t:"NFC Toolkit", m:"NF", plat:"iOS", shot:null,
+   d:"Čítanie, zápis a kopírovanie NFC tagov, raw APDU a história skenov. V podstate všetko, čo Core NFC dovolí.",
+   tags:["SwiftUI","Core NFC"]},
+  {t:"Splitka", m:"SK", plat:"web", shot:"splitka-desktop.png",
+   d:"Delenie účtov s granularitou na položku: kto čo konzumoval. Prihlásenie bez hesla (kód / magic link).",
+   tags:["React","Supabase","Cloudflare"]},
+  {t:"Tábory", m:"TP", plat:"web", shot:null,
+   d:"Systém prihlasovania na letné tábory s portálmi pre rodičov aj vedúcich a automatickým párovaním bankových platieb.",
+   tags:["React","Supabase","RLS"]},
+  {t:"BločekSplit", m:"BS", plat:"web · iOS", shot:null,
+   d:"Delenie účtov po položkách bločku s importom eKasa QR a natívnym iOS klientom.",
+   tags:["FastAPI","React","SwiftUI"]},
+  {t:"Biblia", m:"BI", plat:"iOS", shot:"biblia-ios.png",
+   d:"Čítačka Biblie pre iOS: celý slovenský preklad offline, fulltext vyhľadávanie, záložky a inteligentné parsovanie referencií (napíšeš „Jn 3,16“ a skočí to tam).",
+   tags:["SwiftUI","SwiftData"]},
+  {t:"Zamyslenia", m:"ZA", plat:"iOS", shot:null,
+   d:"Denné zamyslenia offline. Obsah je v GitHub repe a syncuje sa do appky bez backendu.",
+   tags:["SwiftUI","GitHub sync"], gh:"https://github.com/patrikfejda/zamyslenia-ios"},
+  {t:"MD Zobrazovač", m:"MD", plat:"iOS · macOS", shot:null,
+   d:"Offline čítačka Markdownu, ktorá syncuje obsah z GitHub manifestu cez hash porovnanie.",
+   tags:["SwiftUI","Python"], gh:"https://github.com/patrikfejda/md-zobrazovac-ios"},
+  {t:"First Light", m:"FL", plat:"iOS", shot:null,
+   d:"Ochrana prvej hodiny dňa. Cez noc zablokuje rušivé appky a odomkne ich až po dokončení rannej rutiny.",
+   tags:["SwiftUI","FamilyControls"]},
+];
+
+// SMALL — one-page HTML things, just links
+const SMALL=[
+  {t:"Weather History", d:"Dnešné počasie vs. historické rekordy od 1940.", live:"https://patrikfejda.github.io/weather-history", gh:"https://github.com/patrikfejda/weather-history"},
+  {t:"MD Rate kalkulačka", d:"Prepočet hrubej mzdy na B2B man-day sadzbu.", },
+  {t:"Exodus 90", d:"90 dní denných zamyslení, offline PWA.", },
+  {t:"Človečina", d:"Tinder-style karty s konverzačnými otázkami.", },
+  {t:"Money Earned", d:"Odpočítava zarobené peniaze v reálnom čase.", gh:"https://github.com/patrikfejda/money-earned", live:"https://patrikfejda.github.io/money-earned"},
+  {t:"Morse", d:"Prekladač do/z morseovky.", gh:"https://github.com/patrikfejda/morse", live:"https://patrikfejda.github.io/morse"},
+  {t:"Packlist", d:"Zoznam vecí na zbalenie.", gh:"https://github.com/patrikfejda/packlist", live:"https://patrikfejda.github.io/packlist"},
+  {t:"Claude Usage", d:"Lokálny dashboard spotreby tokenov Claude Code.", },
+  {t:"Waze archiver", d:"Zbiera a archivuje Waze výstrahy do SQLite.", },
+  {t:"Spevník", d:"Akordy k pesničkám, web aj iOS.", gh:"https://github.com/patrikfejda/spevnik"},
+];
+
+function fcard(p){
+  const shot=p.shot?`<img src="${SHOTS}${p.shot}" alt="${p.t}" loading="lazy">`
+    :`<div class="fph"><span class="m">${p.m}</span><span class="t">screenshot čoskoro</span></div>`;
+  let ls=[];
+  if(p.live) ls.push(`<a class="flink" href="${p.live}" target="_blank" rel="noopener">${LV} otvoriť</a>`);
+  if(p.gh) ls.push(`<a class="flink" href="${p.gh}" target="_blank" rel="noopener">${GH} kód</a>`);
+  if(!ls.length) ls.push(`<span class="flink muted">${GH} súkromné</span>`);
+  const link=`<div class="flinks">${ls.join("")}</div>`;
+  return `<article class="fcard">
+    <div class="fshot">${shot}</div>
+    <div class="fbody">
+      <div class="frow"><h3>${p.t}</h3><span class="plat">${p.plat}</span></div>
+      <p>${p.d}</p>
+      <div class="ftags">${p.tags.map(t=>`<span>${t}</span>`).join("")}</div>
+      ${link}
+    </div>
+  </article>`;
+}
+function srow(p){
+  let ln="";
+  if(p.live) ln+=`<a href="${p.live}" target="_blank" rel="noopener">otvoriť ↗</a>`;
+  if(p.gh) ln+=`<a href="${p.gh}" target="_blank" rel="noopener">GitHub</a>`;
+  if(!ln) ln=`<span style="color:var(--ink-3);font-size:12.5px">súkromné</span>`;
+  return `<div class="srow"><span class="nm">${p.t}</span><span class="dd">${p.d}</span><span class="ln">${ln}</span></div>`;
+}
+document.getElementById("feat").innerHTML=FEAT.map(fcard).join("");
+document.getElementById("more").innerHTML=MORE.map(fcard).join("");
+document.getElementById("small").innerHTML=SMALL.map(srow).join("");
+
+const root=document.documentElement, tb=document.getElementById("theme");
+const saved=localStorage.getItem("theme"); if(saved) root.dataset.theme=saved;
+tb.onclick=()=>{const c=root.dataset.theme,sd=matchMedia("(prefers-color-scheme:dark)").matches;
+  const d=c==="dark"||(c==="auto"&&sd);root.dataset.theme=d?"light":"dark";localStorage.setItem("theme",root.dataset.theme);};
+</script>
+</body>
+</html>
