@@ -138,6 +138,18 @@ const FEAT=[
 
 // MORE — other real projects worth showing
 const MORE=[
+  {t:"MarkFlow", m:"MF", plat:"web", shot:"markdown-editor-desktop.png",
+   d:"Live Markdown editor s náhľadom, ktorý sa prekresľuje pri písaní. Vlastný XSS-safe parser, export do .md alebo HTML, všetko beží lokálne (auto-save do localStorage). Existuje aj serverová verzia s uploadom obrázkov (Cloudflare Worker + Supabase).",
+   tags:["JavaScript","HTML"], live:"https://patrikfejda.github.io/markdown-editor/", gh:"https://github.com/patrikfejda/markdown-editor"},
+  {t:"TypeRush", m:"TR", plat:"web", shot:"typing-test-desktop.png",
+   d:"Test rýchlosti písania: WPM, presnosť, živé štatistiky. Režimy 15/30/60 s, bežné slová alebo citáty. Jeden self-contained HTML súbor.",
+   tags:["JavaScript","HTML"], live:"https://patrikfejda.github.io/typing-test/", gh:"https://github.com/patrikfejda/typing-test"},
+  {t:"KeyForge", m:"KF", plat:"web", shot:"passwords-generator-desktop.png",
+   d:"Generátor hesiel a passphrase s reálnou analýzou entropie (ukáže odhad času na cracknutie). Nič neopúšťa zariadenie. Jeden HTML súbor.",
+   tags:["JavaScript","HTML"], live:"https://patrikfejda.github.io/passwords-generator/", gh:"https://github.com/patrikfejda/passwords-generator"},
+  {t:"SPZ generátor", m:"SP", plat:"python", shot:null,
+   d:"Generátor slovenských ŠPZ/EČV a nástroj na testovanie OCR rozpoznávania. Plne offline, FastAPI.",
+   tags:["Python","FastAPI","OCR"], gh:"https://github.com/patrikfejda/spz-generator"},
   {t:"Súdne rozhodnutia", m:"SR", plat:"web", shot:"sudne-desktop.png",
    d:"Sťahuje najnovšie rozhodnutia slovenských súdov z verejného registra, LLM z právnického jazyka spraví jednu ľudskú vetu a všetko naservíruje ako vyhľadávateľný feed s kategóriami (drogy, napadnutie, šoférovanie…).",
    tags:["Flask","SQLite","LLM","scraping"]},
